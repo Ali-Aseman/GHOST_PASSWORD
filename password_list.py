@@ -1,4 +1,3 @@
-from List import add
 print("""
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XX                                                                          XX
@@ -443,6 +442,4 @@ while i >= 0:
 print(len(listme), "Creact Password :)")
 for writing in listme:
 	password.write(writing)
-
-Add_Password = 
 password.close()
