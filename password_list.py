@@ -447,7 +447,7 @@ my_names = []
 
 Append_Password = input("Do you want me to add 5 million passwords to the created file? [Y/N] : ")
 
-if Append_Password == "Y":
+if Append_Password.upper() == "Y":
 	with open("password_Apeend.txt", "r") as file:
 		for item in file.readlines():
 
