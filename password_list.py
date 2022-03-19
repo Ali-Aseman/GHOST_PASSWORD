@@ -416,18 +416,18 @@ for writing in listme:
 password.close()
 my_names = []
 
-Append_Password = input("Do you want me to add 5 million passwords to the created file? [Y/N] : ")
+# Append_Password = input("Do you want me to add 5 million passwords to the created file? [Y/N] : ")
 
-if Append_Password.upper() == "Y":
-	with open("password_Apeend.txt", "r") as file:
-		for item in file.readlines():
+# if Append_Password.upper() == "Y":
+# 	with open("password_Apeend.txt", "r") as file:
+# 		for item in file.readlines():
 
-			print(item.strip())
-			my_names.append(item.strip())
+# 			print(item.strip())
+# 			my_names.append(item.strip())
 
-	with open("password_List.txt", "a") as file:
-		for item in my_names:
-			file.write(item + "\n")
-else:
-	print("Password could not be entered into the file :)")
-print(my_names)
+# 	with open("password_List.txt", "a") as file:
+# 		for item in my_names:
+# 			file.write(item + "\n")
+# else:
+# 	print("Password could not be entered into the file :)")
+# print(my_names)
