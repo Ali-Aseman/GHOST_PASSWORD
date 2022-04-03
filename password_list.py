@@ -353,13 +353,13 @@ class Generate:
 			string = name = str(k) + "\n"
 			listme.append(string)
 
-family = input(str("[+] Name : "))
-name = input(str("[+] Family : "))
-phone = input(str("[+] Phone Number : "))
-code_melli = input(str("[+] code_melli : "))
-point = input(str("[+] Mother_Name : "))
-date = input(str("[+] Fother_Name : "))
-# Pet = input(str("[+] Pet Name : "))
+family = input(str("[?] Name >>> "))
+name = input(str("[?] Family >>> "))
+phone = input(str("[?] Phone Number >>> "))
+code_melli = input(str("[?] code_melli >>> "))
+point = input(str("[?] Mother_Name >>> "))
+date = input(str("[?] Fother_Name >>> "))
+# Pet = input(str("[?] Pet Name >>> "))
 
 name = name.lower()
 family = family.lower()
