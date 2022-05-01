@@ -1,4 +1,15 @@
-print("""⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+import string
+import argparse
+from random import choices
+from random import choice, randint
+from string import printable, digits
+from multiprocessing import Process
+from time import time
+from rich.progress import track
+from time import sleep
+
+print("""
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
 ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⡀⠄⠄⠄⠄
 ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⠄⠄⠄⠁⠄⠁⠄⠄⠄⠄⠄
 ⠄⠄⠄⠄⠄⠄⣀⣀⣤⣤⣴⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣦⣤⣤⣄⣀⡀⠄⠄⠄⠄⠄
@@ -47,7 +58,7 @@ class Generate:
 		self.family = ""
 		self.phone = ""
 		self.point = point
-		self.code_melli = code_melli
+		self.national_id = national_id
 	def method_1(self, name, family):
 		listme.append("=========METHOD 1=========")
 		space = " "
@@ -134,25 +145,25 @@ class Generate:
 				self.short += j[0]
 
 		string = self.short + "0" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "1" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "123" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "12345" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "123456" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "123456789" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "%" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "*" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "&" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "123456789" + "\n"
-		listme.append(string) 
+		listme.append(string)
 		string = self.short + "1122" + "\n"
 		listme.append(string)
 		string = self.short + "112233" + "\n"
@@ -200,37 +211,37 @@ class Generate:
 			if len(string) <= 3:
 				break
 
-	def method_4(self, name, code_melli):
+	def method_4(self, name, national_id):
 		listme.append("=========METHOD 4=========\n")
 		space = " "
 		if space in name:
 			name  = name.replace(" "," ")
 
 		for i in range(10):
-			string = name + code_melli[i:] + "\n"
+			string = name + national_id[i:] + "\n"
 			listme.append(string)
 			if len(string) <= 3:
 				break
 
-	def method_5(self, name, family, code_melli):
+	def method_5(self, name, family, national_id):
 		listme.append("=========METHOD 5=========\n")
 		space = " "
 		if space in name:
 			name = name.replace(" ", " ")
 
-		string  = name + family + code_melli + "\n"
+		string  = name + family + national_id + "\n"
 		listme.append(string)
-		string = name + " " + family + code_melli + "\n"
+		string = name + " " + family + national_id + "\n"
 		space = " "
 		self.short = ""
 		if space in string:
 			ll = string.split(" ")
 			for j in ll:
 				self.short += j[0]
-		string = self.short = code_melli + "\n"
+		string = self.short = national_id + "\n"
 		listme.append(string)
 		for i in range(10):
-			string = self.short + code_melli[i:] + "\n"
+			string = self.short + national_id[i:] + "\n"
 			listme.append(string)
 
 	def method_6(self, point, phone):
@@ -290,20 +301,20 @@ class Generate:
 		string = name + family + date + "\n"
 		listme.append(string)
 
-	def method_9(self, name, code_melli):
+	def method_9(self, name, national_id):
 		listme.append("=========METHOD 9=========\n")\
 
-		string = name + code_melli
+		string = name + national_id
 
 		space = " "
 		if space in string:
 			ll = string.split(" ")
-			string = ll[0] + code_melli + "\n"
+			string = ll[0] + national_id + "\n"
 			listme.append(string)
 			string = ll[1] + "\n"
 			listme.append(string)
 
-	def method_10(self, name, code_melli):
+	def method_10(self, name, national_id):
 		listme.append("=========METHOD 10=========\n")
 
 		for i in range(11):
@@ -312,11 +323,11 @@ class Generate:
 			if len(phone[i:]) <= 5:
 				break
 		for j in range(10):
-			string = code_melli[j:] + "\n"
+			string = national_id[j:] + "\n"
 			listme.append(string)
-			if len(code_melli[j:]) <= 5:
+			if len(national_id[j:]) <= 5:
 				break
-	def method_11(self, name, phone, date, code_melli):
+	def method_11(self, name, phone, date, national_id):
 		listme.append("=========METHOD 11=========\n")
 
 		for i in range(4):
@@ -326,7 +337,7 @@ class Generate:
 
 		for i in range(4):
 			for j in range(10):
-				string = name[:i + 1] + code_melli[j:] + "\n"
+				string = name[:i + 1] + national_id[j:] + "\n"
 				listme.append(string)
 
 		for i in range(4):
@@ -356,54 +367,62 @@ class Generate:
 family = input(str("[?] Name >>> "))
 name = input(str("[?] Family >>> "))
 phone = input(str("[?] Phone Number >>> "))
-code_melli = input(str("[?] code_melli >>> "))
+national_id = input(str("[?] national_id >>> "))
 point = input(str("[?] Mother_Name >>> "))
 date = input(str("[?] Fother_Name >>> "))
-# Pet = input(str("[?] Pet Name >>> "))
+# Pet = input(str("[+] Pet Name : "))
 
 name = name.lower()
 family = family.lower()
 point = point.lower()
 objective = Generate()
 
-if code_melli == '0':
+if national_id == '0':
 	objective.method_1(name, family)
 	objective.method_2(name, phone)
 	objective.method_3(name, family, phone)
-	objective.method_4(name, code_melli)
-	objective.method_5(name, family, code_melli)
+	objective.method_4(name, national_id)
+	objective.method_5(name, family, national_id)
 	objective.method_6(point, phone)
 	objective.method_7(point)
 	objective.method_8(name,family, date)
-	objective.method_9(name, code_melli)
-	objective.method_10(phone, code_melli)
-	objective.method_11(name, phone, date, code_melli)
+	objective.method_9(name, national_id)
+	objective.method_10(phone, national_id)
+	objective.method_11(name, phone, date, national_id)
 	if phone == '0':
 		objective.method_1(name, family)
 		objective.method_2(name, phone)
 		objective.method_3(name, family, phone)
-		objective.method_4(name, code_melli)
-		objective.method_5(name, family, code_melli)
+		objective.method_4(name, national_id)
+		objective.method_5(name, family, national_id)
 		objective.method_6(point, phone)
 		objective.method_7(point)
 		objective.method_8(name,family, date)
-		objective.method_9(name, code_melli)
-		objective.method_10(phone, code_melli)
-		objective.method_11(name, phone, date, code_melli)
+		objective.method_9(name, national_id)
+		objective.method_10(phone, national_id)
+		objective.method_11(name, phone, date, national_id)
 else:
 
 		objective.method_1(name, family)
 		objective.method_2(name, phone)
 		objective.method_3(name, family, phone)
-		objective.method_4(name, code_melli)
-		objective.method_5(name, family, code_melli)
+		objective.method_4(name, national_id)
+		objective.method_5(name, family, national_id)
 		objective.method_6(point, phone)
 		objective.method_7(point)
 		objective.method_8(name,family, date)
-		objective.method_9(name, code_melli)
-		objective.method_10(phone, code_melli)
-		objective.method_11(name, phone, date, code_melli)
-		# objective.method_20(name)
+		objective.method_9(name, national_id)
+		objective.method_10(phone, national_id)
+		objective.method_11(name, phone, date, national_id)
+		objective.method_20(name)
+
+
+def process_data():
+    sleep(0.07)
+
+
+for _ in track(range(100), description='[green]Creact Password'):
+    process_data()
 
 i = len(listme) - 1
 while i >= 0:
@@ -413,10 +432,8 @@ while i >= 0:
 print(len(listme), "Creact Password :)")
 for writing in listme:
 	password.write(writing)
+
 password.close()
-
-
-
 
 
 z = input("[?] Do you want to use password creation for WiFi or vps and >>> ")
@@ -669,7 +686,7 @@ def pass_ghost():
 				"portable".title(),
 				"portable".upper()
 			]
-			count = int(input("Enter Count: "))
+			count = int(input("Enter Count : "))
 			file = input("Enter File Name Or Directory To Save (If Not Want Save to File, Enter NOT): ")
 			if file.upper() == "NOT":
 				pass
@@ -1066,6 +1083,9 @@ def pass_ghost():
 
 
 if z == "y":
-	pass_ghost()	
+	pass_ghost()
 elif z == "n":
+	print()
 	print("Ok :)")
+
+
